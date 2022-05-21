@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 %Packages%
-\usepackage{amsmath, bm, xcolor, amssymb}
+\usepackage{amsmath, bm, xcolor, amssymb, parskip}
 
 %Meta%
 \title{Linear Algebra}
@@ -14,46 +14,45 @@
 \newcommand{\A}{{\bm{A}}}
 \newcommand{\B}{{\bm{B}}}
 \newcommand{\vecs}[2]{{\bm{#1}_1, \dots, \bm{#1}_#2}}
+\newcommand{\xdefinition}[2]{\paragraph{\colorbox{#1!30}{\textbf{Definition:}} (#2):}}
+\newcommand{\xrule}[1]{\paragraph{\colorbox{#1!30}{\textbf{Rule:}}}}
 
 %Document%
 \begin{document}
 
 \maketitle
-	
+
+%Introduction%	
 \section{Introduction}
 
 Linear algebra is a discipline of mathematics that deals with linear equations, vectors, matrices and their transformations.
 
+%Systems of linear equations%
 \section{Systems of linear equations}
 
-
+%Matrices%
 \section{Matrices}
 
+%Solving systems of linear equations%
 \section{Solving systems of linear equations}
 
+%Vector spaces%
 \section{Vector spaces}
 
+%Linear independence%
 \section{Linear independence}
 
-\colorbox{red!30}{\textbf{Definition:}} (Linear combination): Consider a vector space $V$ and a finite number of vectors $\bx_1, \dots, \bx_k \in V$. Then every $\bm{v} \in V$ of the form:
+\xdefinition{red}{Linear combination} Consider a vector space $V$ and a finite number of vectors $\bx_1, \dots, \bx_k \in V$. Then every $\bm{v} \in V$ of the form:
 %
 	\begin{equation}
 		\bm{v} = \sum\limits_{i=1}^{k} \lambda_i \bm{x}_i \in V
 	\end{equation}
 %
 	with $\lambda_1, ÷\dots, \lambda_k \in \R$ is a linear combination of the vectors $\bx_1, \dots, \bx_k$.
-%
-\\
-\\
-\\
-%
-\colorbox{red!30}{\textbf{Definition:}} (Linear independence): Given a vector space $V$ and $k \in \N$. Vectors $\bx_1, \dots, \bx_k \in V$ are said to be linearly independent if there exists no non-trivial solution to $\bm{0} = \sum\nolimits_{i=1}^{k} \lambda_i \bx_i$ with at least one $\lambda_i \neq 0$. Otherwise they're linearly dependent.
-%
-\\
-\\
-\\
-%
-\colorbox{red!30}{\textbf{Rule:}}
+
+\xdefinition{red}{Linear independence} Given a vector space $V$ and $k \in \N$. Vectors $\bx_1, \dots, \bx_k \in V$ are said to be linearly independent if there exists no non-trivial solution to $\bm{0} = \sum\nolimits_{i=1}^{k} \lambda_i \bx_i$ with at least one $\lambda_i \neq 0$. Otherwise they're linearly dependent.
+
+\xrule{red}
 %
 \begin{itemize}
   \item If at least one of the vector $\bm{x}_i$ is $\bm{0}$ then they are linearly dependent.
@@ -64,9 +63,9 @@ Linear algebra is a discipline of mathematics that deals with linear equations, 
 	  \end{itemize}
 	  If all columns are pivots, the vectors are linearly independent.
 \end{itemize}
-%
-\colorbox{red!30}{\textbf{Rule:}} Given $m$ linear combinations over $k$ linearly independent vectors $\bm{b}_1, \dots, \bm{b}_k \in V$.
-%
+
+\xrule{red} Given $m$ linear combinations over $k$ linearly independent vectors $\bm{b}_1, \dots, \bm{b}_k \in V$.
+
 \begin{equation}
 	\begin{aligned}
 		\bx_1 &= \sum\limits_{i=1}^k \lambda_{i1} \bm{b}_i \\
@@ -91,14 +90,57 @@ We can test whether $\bx_1, \dots, \bx_m$ are linearly independent using:
 \end{equation}
 %
 Which means that $\{\vecs{x}{k}\}$ is linearly independent if the column vectors $\{\vecs{\lambda}{m}\}$ are linearly independent.
-%
-\\
-\\
-\\
-%
-\colorbox{red!30}{\textbf{Rule:}} In a vector space $V$, $m$ linear combinations of $\vecs{b}{k}$ are linearly independent if $m > k$. 
+
+\xrule{red} In a vector space $V$, $m$ linear combinations of $\vecs{b}{k}$ are linearly independent if $m > k$. 
+
+%Basis and rank%
+\section{Basis and rank}
+
+In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that posess the property that any vector $\bm{v} \in V$ can be obtained through a linear combination of vectors in $\mathcal{A}$.
+
+%Generating Set and Basis%
+\subsection{Generating Set and Basis}
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
