@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 %Packages%
-\usepackage{amsmath, bm, xcolor, amssymb, parskip}
+\usepackage{amsmath, bm, xcolor, amssymb, parskip, cancel}
 
 %Meta%
 \title{Linear Algebra}
@@ -16,6 +16,7 @@
 \newcommand{\vecs}[2]{{\bm{#1}_1, \dots, \bm{#1}_#2}}
 \newcommand{\xdefinition}[2]{\paragraph{\colorbox{#1!30}{\textbf{Definition:}} (#2):}}
 \newcommand{\xrule}[1]{\paragraph{\colorbox{#1!30}{\textbf{Rule:}}}}
+\newcommand{\mc}[1]{\mathcal{#1}}
 
 %Document%
 \begin{document}
@@ -39,6 +40,47 @@ Linear algebra is a discipline of mathematics that deals with linear equations, 
 %Vector spaces%
 \section{Vector spaces}
 
+\xdefinition{blue}{Group} Given a set $\mc{G}$ and an operation $\otimes$ defined on $\mc{G}$. $G := (\mc{G}, \otimes)$ is a group if the following holds:
+%
+\begin{itemize}
+	\item Closure of $\mc{G}$ under $\otimes$: $\forall x, y \in \mc{G} : x \otimes y \in \mc{G}$
+	\item Associativity: $\forall x, y, z \in \mc{G} : (x \otimes y) \otimes z = x \otimes (	y \otimes z)$
+	\item Neutral element: $\exists e \in \mc{G} \ \forall x \in \mc{G} : x \otimes e = x$
+	\item Inverse element: $\forall x \in \mc{G} \ \exists y \in \mc{G}: x \otimes y = e$ where $e$ is the neutral element.
+\end{itemize}
+%
+
+\xdefinition{red}{Vector space} A real-valued vector space $V = (\mc{V}, +, \cdot)$ is a set $\mc{V}$ with two operations $+$ and $\cdot$ defined where the following holds:
+%
+\begin{itemize}
+	\item $(\mc{V}, +)$ is an abelian group.
+	\item Distributivity:
+	\begin{itemize}
+	\item $\forall \bm{x}, \bm{y} \in \mc{V} \ \forall \lambda \in \R : \lambda(\bm{x} + \bm{y}) = \lambda \bm{x} + \lambda \bm{y}$
+	\item $\forall \bm{x} \in \mc{V} \ \forall \lambda, \psi \in \R : (\lambda + \psi) \bm{x} = \lambda \bm{x} + \psi \bm{y}$
+	\end{itemize}
+	\item Associativity (outer operation)
+	\item Neutral element (outer operation)
+\end{itemize}
+%
+
+\xdefinition{red}{Vector subspace} Let $V = (\mc{V}, +, \cdot)$ be a vector space and $\mc{U} \subseteq \mc{V}, \mc{U} \neq \cancel{0}$. Then $U = (\mc{U}, +, \cdot)$ is a \textit{vector subspace} (or \textit{linear subspace}) if $U$ is a vector space restricted to $\mc{U} \times \mc{U}$ and $\mc{U} \times \R$. We write $U \subseteq V$.
+
+\xrule{red} Given $U \subseteq V$, the following properties of $V$ are passed to $U$.
+%
+\begin{itemize}
+	\item Abelian group, distributivity, associativity and neutral element properties
+
+	\item $\mc{U} \neq \cancel{0}$, in particular: $\bm{0} \in \mc{U}$
+	\item Closure of $U$
+	\begin{itemize}
+		\item $\forall \lambda \in \R \ \forall \bm{x} \in \mc{U} : \lambda \bm{x} \in \mc{U}$
+		\item $\forall \bm{x}, \bm{y} \in \mc{U} : \bm{x} + \bm{y} \in \mc{U}$
+	\end{itemize}
+\end{itemize}
+
+\xrule{red} Every subspace $U \subseteq (\R^n, +, \cdot)$ is the solution space of a homogeneous system of linear equations $\A \bm{x} = \bm{0}$ for $\bm{x} \in \R^n$
+
 %Linear independence%
 \section{Linear independence}
 
@@ -56,7 +98,7 @@ Linear algebra is a discipline of mathematics that deals with linear equations, 
 %
 \begin{itemize}
   \item If at least one of the vector $\bm{x}_i$ is $\bm{0}$ then they are linearly dependent.
-  \item The vectors $\{\bx_1, \dots, \bx_k : \bx_i \neq \bm0, i =1, \dots, k\} \geqslant 2$ are linearly dependent, if and only if, at least one of them is a linear combination of the others.
+  \item The vectors $\{\bx_1, \dots, \bx_k : \bx_i \neq \bm0, i =1, \dots, k\} , k \geqslant 2$ are linearly dependent, if and only if, at least one of them is a linear combination of the others.
   \item To check whether $\bx_1, \dots, \bx_k \in V$ are linearly independent we can use Gaussian elimation: write all vectors as columns of a matrix $\A$ and perform Gaussian elimination until the matrix is in row-echelon form.\begin{itemize}
   \item Non-pivot columns can be expressed as linear combinations of vectors on their left.
   \item Pivot columns are linearly independent from vectors on their left.
@@ -101,8 +143,24 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 %Generating Set and Basis%
 \subsection{Generating Set and Basis}
 
-\end{document}
+\xdefinition{red}{Generating Set and Span} Given a set of vectors $\mc{A} = \{ \vecs{x}{k} \} \subseteq \mc{V}$. If every vector $\bm{v} \in \mc{V}$ can be expressed as a linear combination of vectors in $\mc{A}$, $\mc{A}$ is called a \textit{generating set} of $V$.	The set of all linear combinations of vectors in $\mc{A}$ is called the span of $\mc{A}$.
 
+\xdefinition{red}{Basis} Consider a vector space $V = (\mc{V}, +, \cdot)$ and $\mc{A} \subseteq \mc{V}$. A generating set $\mc{A}$ of $\mc{V}$ is called \textit{minimal} if there exists no smaller set $\tilde{\mc{A}} \subsetneq \mc{A} \subseteq \mc{V}$ that spans $\mc{V}$. Every linearly independent generating set of V is minimal and is called a \textit{basis} of $V$.
+
+\xrule{red} Given $\mc{B} \subseteq \mc{V}, \mc{B} \neq \emptyset$. Then the following statements are equivalent:
+%
+\begin{itemize}
+	\item $\mc{B}$ is a basis of $V$
+	\item $\mc{B}$ is a minimal generating set.
+	\item $\mc{B}$ is a maximal linearly independent set of vectors in $V$ such that adding any vector to the set $\mc{B}$ would make it linearly dependent. 
+	\item Every vector $\bm{x} \in V$ is a linear combination of vectors from $\mc{B}$, and every combination is unique, i.e., with
+		\begin{equation}
+			\bm{x} = \sum\limits_{i=1}^{k} \lambda_i \bm{b}_i
+		\end{equation}
+\end{itemize}
+%
+
+\end{document}
 
 
 
