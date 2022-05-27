@@ -31,16 +31,141 @@ Linear algebra is a discipline of mathematics that deals with linear equations, 
 %Systems of linear equations%
 \section{Systems of linear equations}
 
+\xdefinition{green}{Linear system} A collection of one or more equations involving the same variables.
+
+\xrule{green} For any linear system of the following form:
+%
+\begin{equation}
+\begin{aligned}
+	a_{11} x_1 + \cdots +& a_{1n} x_n = b_1 \\
+    	         \vdots & \\
+	a_{m1} x_1 + \cdots +& a_{mn} x_n = b_m
+\end{aligned}
+\end{equation}
+%
+There exists a shorthand notation:
+%
+\begin{equation}
+\begin{aligned}
+\begin{bmatrix}
+    a_{11} \\
+    \vdots \\
+    a_{m1}
+\end{bmatrix} x_1 + \begin{bmatrix}
+    a_{12} \\
+    \vdots \\
+    a_{m2}
+\end{bmatrix} x_1 + \cdots + \begin{bmatrix}
+    a_{1n} \\
+    \vdots \\
+    a_{mn}
+\end{bmatrix} x_n = \begin{bmatrix}
+    b_{1} \\
+    \vdots \\
+    b_{m}
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+%
+Which can be further compacted into the form $\A \bm{x} = \bm{b}$ like so:
+%
+\begin{equation}
+\begin{aligned}
+\begin{bmatrix}
+    a_{11} & \cdots & a_{1n} \\
+    \vdots & & \vdots      \\
+    a_{m1} & \cdots & a_{mn}
+\end{bmatrix} \begin{bmatrix}
+    x_{1} \\
+    \vdots \\
+    x_{n}
+\end{bmatrix} = \begin{bmatrix}
+    b_{1} \\
+    \vdots \\
+    b_{m}
+\end{bmatrix}
+\end{aligned}
+\end{equation}
+%
+Or using the \textit{augmented matrix} notation $[\A | \bm{b}]$
+%
+\begin{equation}
+\left[\begin{array}{ccc|c}
+    a_{11} & \cdots & a_{1n} & b_{1}  \\
+    \vdots &        & \vdots & \vdots \\ 
+    a_{m1} & \cdots & a_{mn} & b_{m}
+\end{array}\right]
+\end{equation}
+
 %Matrices%
 \section{Matrices}
+
+\xdefinition{green}{Matrix} With $m, n \in \N$ a real-valued $(m, n)$ matrix $\A$ is an $m \cdot n$ tuple of elements $a_{ij}$. $\R^{m \times n}$ is the set of all real valued matrices.
+
+\xrule{green} For matrices $\bm{A} \in \R^{m \times n}, \bm{B} \in \R^{n \times k}$, the elements $c_{ij}$ of the product $\bm{C} = \bm{AB} \in \R^{m \times k}$ are computed as:
+%
+\begin{equation}
+	c_{ij} = \sum\limits_{l=1}^{n} = a_{il} b_{lj}, \text{ where } i = 1, \dots, m, \text{ and } j = 1, \dots, k.
+\end{equation}
+
+\xrule{green} For matrices $\A, \bm{B} \in \R^{m \times n}$, addition is defined as element-wise.
+
+\xrule{green} Element wise multiplication of $\bm{A}, \bm{B} \in \R^{m \times n}$ is called a \textit{Hadamard product}.
+
+\xdefinition{green}{Identity matrix} We define an identity matrix in $\R^{n \times n}$ as:
+%
+\begin{equation}
+I_n := \begin{bmatrix}
+    1 & \cdots & 0 & \cdots & 0 \\
+    \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0 & \cdots & 1 & \cdots & 0 \\
+    \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0 & \cdots & 0 & \cdots & 1
+\end{bmatrix} \in \R^{n \times n}
+\end{equation}
+
+\xdefinition{green}{Inverse matrix} The inverse of a matrix $\bm{A} \in \R^{n \times n}$ denoted $\bm{A}^{-1}$ is a unique matrix $\bm{B} \in \R^{n \times n}$ given $\bm{AB} = \bm{I}_n = \bm{BA}$. If there exists an inverse for a matrix $\A$ then it is called \textit{regular/invertible/nonsingular}, otherwise \textit{singular/non-invertible}.
+
+\xdefinition{green}{Transpose} For $\bm{A} \in \R^{m \times n}$ the matrix $\bm{B} \in \R^{n \times m}$ with $b_{ij} = a_{ji}$ is called the transpose of $\bm{A}$. We write $\bm{B} = \bm{A}^\top$.
 
 %Solving systems of linear equations%
 \section{Solving systems of linear equations}
 
+\xrule{green} When solving a system of linear equations of the form $\bm{Ax} = \bm{b}$ we're looking to find scalars $x_1, \dots, x_n$ such that $\sum\nolimits_{i=1}^{n} x_i \bm{c}_i = \bm{b}$. A \textit{particular solution} of a linear system is a solution to the equation with particular, arbitrary values. A \textit{general solution} of a system of linear equations is a formula which gives all solutions for different values of parameters.
+
+\xdefinition{green}{Elementary transformations} Consists of three rule that can be applied on a linear system of the form $\A \bm{x} = \bm{b}$.
+%
+\begin{itemize}
+	\item Exchange of two equations (swapping rows in $[\A | \bm{b}]$)
+	\item Multiplication of an equation with a constant $\lambda \in \R \backslash \{0\}$
+	\item Addition of two equations (rows of $[\A | \bm{b}]$)
+\end{itemize}
+%
+We use $\leadsto$ to indicate an elementary transformation.
+
+\xdefinition{blue}{Pivot $|$ Leading coefficient} The \textit{leading coefficient} of a row (first nonzero number from the left) is called the \textit{pivot} and is always strictly to the right of the pivot of the row above it.
+
+\xdefinition{blue}{Row echelon form} A matrix being in row echelon form means that Gaussian elimination has operated on the rows or columns of that matrix such that:
+%
+\begin{itemize}
+	\item All rows consisting of only zeroes are at the bottom.
+	\item The leading coefficient of a non-zero row is always strictly to the right of the leading coefficient of the row above it.
+\end{itemize}
+
+\xdefinition{blue}{Reduced row echelon form} An equation is in \textit{reduced row echelon form} (or \textit{row cannonical form}) if every pivot is $1$, the pivot is the only nonzero entry in its column (each pivot's column is a unit vector).
+
+\xrule{blue} The variables corresponding to the pivots in the row-echelon form are called \textit{basic variables} and the other variables are \textit{free variables}.
+
+\xrule{red} To obtain the inverse $\A^{-1}$ of a matrix $\A$ we can use Gaussian elimination to bring it into reduced row echelon form such as the desired inverse is given as its right hand side.
+%
+\begin{equation}
+	[\bm{A}|\bm{I}_n] \leadsto \cdots \leadsto [\bm{I}_n|\bm{A}^{-1}]
+\end{equation}
+
 %Vector spaces%
 \section{Vector spaces}
 
-\xdefinition{blue}{Group} Given a set $\mc{G}$ and an operation $\otimes$ defined on $\mc{G}$. $G := (\mc{G}, \otimes)$ is a group if the following holds:
+\xdefinition{green}{Group} Given a set $\mc{G}$ and an operation $\otimes$ defined on $\mc{G}$. $G := (\mc{G}, \otimes)$ is a group if the following holds:
 %
 \begin{itemize}
 	\item Closure of $\mc{G}$ under $\otimes$: $\forall x, y \in \mc{G} : x \otimes y \in \mc{G}$
@@ -48,9 +173,8 @@ Linear algebra is a discipline of mathematics that deals with linear equations, 
 	\item Neutral element: $\exists e \in \mc{G} \ \forall x \in \mc{G} : x \otimes e = x$
 	\item Inverse element: $\forall x \in \mc{G} \ \exists y \in \mc{G}: x \otimes y = e$ where $e$ is the neutral element.
 \end{itemize}
-%
 
-\xdefinition{red}{Vector space} A real-valued vector space $V = (\mc{V}, +, \cdot)$ is a set $\mc{V}$ with two operations $+$ and $\cdot$ defined where the following holds:
+\xdefinition{blue}{Vector space} A real-valued vector space $V = (\mc{V}, +, \cdot)$ is a set $\mc{V}$ with two operations $+$ and $\cdot$ defined where the following holds:
 %
 \begin{itemize}
 	\item $(\mc{V}, +)$ is an abelian group.
@@ -64,27 +188,26 @@ Linear algebra is a discipline of mathematics that deals with linear equations, 
 \end{itemize}
 %
 
-\xdefinition{red}{Vector subspace} Let $V = (\mc{V}, +, \cdot)$ be a vector space and $\mc{U} \subseteq \mc{V}, \mc{U} \neq \cancel{0}$. Then $U = (\mc{U}, +, \cdot)$ is a \textit{vector subspace} (or \textit{linear subspace}) if $U$ is a vector space restricted to $\mc{U} \times \mc{U}$ and $\mc{U} \times \R$. We write $U \subseteq V$.
+\xdefinition{blue}{Vector subspace} Let $V = (\mc{V}, +, \cdot)$ be a vector space and $\mc{U} \subseteq \mc{V}, \mc{U} \neq \cancel{0}$. Then $U = (\mc{U}, +, \cdot)$ is a \textit{vector subspace} (or \textit{linear subspace}) if $U$ is a vector space restricted to $\mc{U} \times \mc{U}$ and $\mc{U} \times \R$. We write $U \subseteq V$.
 
-\xrule{red} Given $U \subseteq V$, the following properties of $V$ are passed to $U$.
+\xrule{blue} Given $U \subseteq V$, the following properties of $V$ are passed to $U$.
 %
 \begin{itemize}
-	\item Abelian group, distributivity, associativity and neutral element properties
-
-	\item $\mc{U} \neq \cancel{0}$, in particular: $\bm{0} \in \mc{U}$
-	\item Closure of $U$
+	\item Abelian group, distributivity, associativity and neutral element properties.
+	\item $\mc{U} \neq \cancel{0}$, in particular: $\bm{0} \in \mc{U}$.
+	\item Closure of $U$:
 	\begin{itemize}
-		\item $\forall \lambda \in \R \ \forall \bm{x} \in \mc{U} : \lambda \bm{x} \in \mc{U}$
-		\item $\forall \bm{x}, \bm{y} \in \mc{U} : \bm{x} + \bm{y} \in \mc{U}$
+		\item $\forall \lambda \in \R \ \forall \bm{x} \in \mc{U} : \lambda \bm{x} \in \mc{U}$.
+		\item $\forall \bm{x}, \bm{y} \in \mc{U} : \bm{x} + \bm{y} \in \mc{U}$.
 	\end{itemize}
 \end{itemize}
 
-\xrule{red} Every subspace $U \subseteq (\R^n, +, \cdot)$ is the solution space of a homogeneous system of linear equations $\A \bm{x} = \bm{0}$ for $\bm{x} \in \R^n$
+\xrule{blue} Every subspace $U \subseteq (\R^n, +, \cdot)$ is the solution space of a homogeneous system of linear equations $\A \bm{x} = \bm{0}$ for $\bm{x} \in \R^n$
 
 %Linear independence%
 \section{Linear independence}
 
-\xdefinition{red}{Linear combination} Consider a vector space $V$ and a finite number of vectors $\bx_1, \dots, \bx_k \in V$. Then every $\bm{v} \in V$ of the form:
+\xdefinition{blue}{Linear combination} Consider a vector space $V$ and a finite number of vectors $\bx_1, \dots, \bx_k \in V$. Then every $\bm{v} \in V$ of the form:
 %
 	\begin{equation}
 		\bm{v} = \sum\limits_{i=1}^{k} \lambda_i \bm{x}_i \in V
@@ -143,9 +266,9 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 %Generating Set and Basis%
 \subsection{Generating Set and Basis}
 
-\xdefinition{red}{Generating Set and Span} Given a set of vectors $\mc{A} = \{ \vecs{x}{k} \} \subseteq \mc{V}$. If every vector $\bm{v} \in \mc{V}$ can be expressed as a linear combination of vectors in $\mc{A}$, $\mc{A}$ is called a \textit{generating set} of $V$.	The set of all linear combinations of vectors in $\mc{A}$ is called the span of $\mc{A}$.
+\xdefinition{blue}{Generating Set and Span} Given a set of vectors $\mc{A} = \{ \vecs{x}{k} \} \subseteq \mc{V}$. If every vector $\bm{v} \in \mc{V}$ can be expressed as a linear combination of vectors in $\mc{A}$, $\mc{A}$ is called a \textit{generating set} of $V$.	The set of all linear combinations of vectors in $\mc{A}$ is called the span of $\mc{A}$. We write $V = \text{span}[A]$ or $V = \text{span}[\vecs{x}{k}]$.
 
-\xdefinition{red}{Basis} Consider a vector space $V = (\mc{V}, +, \cdot)$ and $\mc{A} \subseteq \mc{V}$. A generating set $\mc{A}$ of $\mc{V}$ is called \textit{minimal} if there exists no smaller set $\tilde{\mc{A}} \subsetneq \mc{A} \subseteq \mc{V}$ that spans $\mc{V}$. Every linearly independent generating set of V is minimal and is called a \textit{basis} of $V$.
+\xdefinition{red}{Basis} Consider a vector space $V = (\mc{V}, +, \cdot)$ and $\mc{A} \subseteq \mc{V}$. A generating set $\mc{A}$ of $\mc{V}$ is called \textit{minimal} if there exists no smaller set $\tilde{\mc{A}} \subsetneq \mc{A} \subseteq \mc{V}$ that spans $\mc{V}$. Every linearly independent generating set of $V$ is minimal and is called a \textit{basis} of $V$.
 
 \xrule{red} Given $\mc{B} \subseteq \mc{V}, \mc{B} \neq \emptyset$. Then the following statements are equivalent:
 %
@@ -158,62 +281,41 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 			\bm{x} = \sum\limits_{i=1}^{k} \lambda_i \bm{b}_i
 		\end{equation}
 \end{itemize}
+
+\xrule{red} Every vector space $V$ posseses a basis $B$. There can be many bases for $V$, all have the same number of elements, the \textit{basis vectors}.
+
+\xrule{red} A basis of a subspace $U = span[\vecs{x}{k}] \subseteq \R^n$ by:
 %
+\begin{itemize}
+	\item Write the spanning vectors as columns of a matrix $\A$
+	\item Determine the row-echelon form of $\A$
+	\item The spanning vectors associated with the pivots columns are a basis of $U$. 
+\end{itemize}
+
+\subsection{Rank}
+
+\xdefinition{red}{Rank} The number of linearly independent columns of a matrix $\A \in \R^{m \times n}$ equals the number of linearly indepdendent rows and is called the \textit{rank}. We write $\text{rk}(A)$
+
+\xrule{red}
+%
+\begin{itemize}
+	\item $\text{rk}(\A)$ = $\text{rk}(\A^\top)$ .i.e column rank equals row rank.
+	\item The columns of $\A \in \R^{m \times n}$ span a subspace $U \subseteq \R^m$ with $\text{dim}(U) = \text{rk}(\A)$. This subspace is called the \textit{image} or \textit{range}. A basis of $U$ can be found by applying Gaussian elimination to $\A$. Same goes for the rows, given a subspace $W \in \R^n$.	
+	\item For all $\A \in \R^{n \times n}$ it holds that $\A$ is regular (invertible) if and only $\text{rk}(\A) = n$.
+	\item For all $\A \in \R^{m \times n}$ and all $\bm{b} \in \R^m$ it holds that the linear equation system $\A \bm{x} = \bm{x}$ can be solved only and if $\text{rk}(\A) = \text{rk}(\A | \bm{b})$
+	\item A matrix $\A \in \R^{m \times n}$ is said to have \textit{full-rank} if $\text{rk}(\A) = \text{min}(m, n)$. Otherwise, it is \textit{rank-deficient}.
+\end{itemize}
+
+%Linear mappins%
+\section{Linear mappings}
+
+\xdefinition{red}{Linear mapping} For vector spaces $V, W$, a mapping $\Phi : V \rightarrow W$ is called a \textit{linear mapping} (or \textit{linear transformation} or \textit{vector space homomorphism}).
+%
+\begin{equation}
+\begin{aligned}
+	\Phi(\bm{x} + \bm{y}) &= \Phi(\bm{x}) + \Phi(\bm{y}) \\
+	\Phi(\lambda \bm{x}) &= \lambda \Phi(\bm{x})
+\end{aligned}
+\end{equation}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
