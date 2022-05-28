@@ -157,7 +157,7 @@ We use $\leadsto$ to indicate an elementary transformation.
 \xrule{blue} The variables corresponding to the pivots in the row-echelon form are called \textit{basic variables} and the other variables are \textit{free variables}.
 
 \xrule{red} To obtain the inverse $\A^{-1}$ of a matrix $\A$ we can use Gaussian elimination to bring it into reduced row echelon form such as the desired inverse is given as its right hand side.
-%
+% 
 \begin{equation}
 	[\bm{A}|\bm{I}_n] \leadsto \cdots \leadsto [\bm{I}_n|\bm{A}^{-1}]
 \end{equation}
@@ -309,7 +309,7 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 %Linear mappins%
 \section{Linear mappings}
 
-\xdefinition{red}{Linear mapping} For vector spaces $V, W$, a mapping $\Phi : V \rightarrow W$ is called a \textit{linear mapping} (or \textit{linear transformation} or \textit{vector space homomorphism}).
+\xdefinition{blue}{Linear mapping} For vector spaces $V, W$, a mapping $\Phi : V \rightarrow W$ is called a \textit{linear mapping} (or \textit{linear transformation} or \textit{vector space homomorphism}). Linear transformations are generally represented as matrices.
 %
 \begin{equation}
 \begin{aligned}
@@ -318,4 +318,118 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 \end{aligned}
 \end{equation}
 
+\xdefinition{blue}{Injective, Surjective, Bijective} Consider a mapping $\Phi : \mc{V} \rightarrow \mc{W}$ where $\mc{V}, \mc{W}$ can be arbitrary sets. Then $\Phi$ is called
+%
+\begin{itemize}
+	\item \textit{Injective} if $\forall \bm{x} \bm{y} \in \mc{V} : \Phi(\bm{x}) = \Phi(\bm{y}) \implies \bm{x} = \bm{y}$.
+	\item \textit{Surjective} if $\Phi(\mc{V}) = \mc{W}$.
+	\item \textit{Bijective} if it is injective and surjective. Which means there exists a mapping $\Psi$ so that $\Psi \circ \Phi(\bm{x}) = \bm{x}$. This mapping $\Psi$ is called the inverse of $\Phi$ and denoted $\Phi^{-1}$.
+\end{itemize}
+
+\xrule{blue}
+%
+\begin{itemize}
+	\item \textit{Isomorphism} $\Phi : V \rightarrow W$ linear and bijective.
+	\item \textit{Endomorphism} $\Phi : V \rightarrow V$ linear.
+	\item \textit{Automorphism} $\Phi : V \rightarrow V$ linear and bijective.
+	\item We define $\text{id}_V : V \rightarrow V, \bm{x} \mapsto \bm{x}$ as the \textit{identity mapping} or \textit{identity automorphism} in V.
+\end{itemize}
+
+\xrule{blue} \textit{Finite dimensional vector spaces} $\mc{V}$ and $\mc{W}$ are \textit{isomorphic} ($\mc{V} \rightarrow \mc{W}$ linear and bijective) if and only if $\dim(\mc{V})$ = $\dim(\mc{W})$.
+
+\xdefinition{blue}{Ordered basis} Matrix representation of the basis vectors for an $n$ dimensional vector space $\mc{V}$. We write:
+%
+\begin{equation}
+\begin{aligned}
+	\text{Ordered basis notation: } B &= (\vecs{b}{n}) \\
+	\text{Matrix notation: } \bm{B} &= [\vecs{b}{n}] \\
+	\text{Unordered basis notation: } \mc{B} &= \{\vecs{b}{n}\}
+\end{aligned}
+\end{equation}
+
+\xdefinition{blue}{Coordinates} Given an ordered basis $B = (\vecs{b}{n})$ The \textit{coordinate vector}/\textit{coordinate representation} of $\bm{x} \in V$ is given as:
+%
+\begin{equation}
+	\bm{\alpha} = \begin{bmatrix}
+		\alpha_1 \\
+		\vdots \\
+		\alpha_n
+	\end{bmatrix} \in \R^n
+\end{equation}
+%
+Where
+%
+\begin{equation}
+	\bm{x} = \alpha_1 \bm{b}_1 + \dots + \alpha_n \bm{b}_n
+\end{equation}
+
+\xdefinition{blue}{Transformation Matrix} Considering vector spaces $V, W$ with corresponding (ordered) bases $B = (\vecs{b}{n})$ and $C = (\vecs{c}{m})$ and a linear mapping $\Phi : V \rightarrow W$. For $j \in \{1, \dots, n\}$:
+%
+\begin{equation}
+	\Phi(\bm{b}_j) = \alpha_{1j} \bm{c}_1 + \cdots + \alpha_{mj} \bm{c}_m
+\end{equation}
+%
+is the unique representation of $\Phi(\bm{b}_j)$ with respect to $C$. Then we call the $m \times n$ matrix $\A_\Phi$, whose elements are given by
+%
+\begin{equation}
+	A_\Phi(i, j) = \alpha_{ij}
+\end{equation}
+%
+the transformation matrix of $\Phi$ (with respect to $B, V, C, W$). Therefore, if $\hat{x}$ is the coordinate vector of $x \in \mc{V}$ with respect to $B$ and $\hat{y}$ the coordinate vector of $y = \Phi(\bm{x}) \in \mc{W}$ with respect to $C$, then
+%
+\begin{equation}
+	\hat{\bm{y}} = \A_\Phi \hat{\bm{x}}
+\end{equation}
+
+\xdefinition{red}{Basis change} For a linear mapping $\Phi : V \rightarrow W$, the ordered bases $B, \tilde{B}$ of $V$ of $n$ elements and $C, \tilde{C}$ of $W$ of $m$ elements and the transformation matrix $\A_\Phi$ of $\Phi$ with respect to $B$ and $C$, $\tilde{\A}_\Phi$ with respect to $\tilde{B}$ and $\tilde{C}$ is given as
+%
+\begin{equation}
+	\tilde{\A}_\Phi = \bm{T}^{-1} \A_\Phi \bm{S}
+\end{equation}
+%
+where $\bm{S} \in \R^{n \times n}$ is the transformation matrix of $\text{id}_V$ and $\bm{T} \in \R^{m \times m}$ is the transformation matrix of $\text{id}_W$
+
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
