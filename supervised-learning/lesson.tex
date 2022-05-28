@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+
+%Packages%
+\usepackage{amsmath, bm, xcolor, amssymb, parskip, cancel}
+
+%Meta%
+\title{Supervised Learning}
+\author{Diego ROJAS}
+
+%Shortcuts%
+\newcommand{\R}{{\rm I\!R}}
+\newcommand{\N}{{\rm I\!N}}
+\newcommand{\bx}{{\bm{x}}}
+\newcommand{\A}{{\bm{A}}}
+\newcommand{\B}{{\bm{B}}}
+\newcommand{\vecs}[2]{{\bm{#1}_1, \dots, \bm{#1}_#2}}
+\newcommand{\xdefinition}[2]{\paragraph{\colorbox{#1!30}{\textbf{Definition:}} (#2):}}
+\newcommand{\xrule}[1]{\paragraph{\colorbox{#1!30}{\textbf{Rule:}}}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+
+%Document%
+\begin{document}
+
+\maketitle
+
+%Introduction%	
+\section{Introduction}
+
+Supervised learning is a method of machine learning which uses the \textit{inputs} to predict the \textit{outputs}.
+
+\xdefinition{red}{Predictor} Synonym for input.
+
+\xdefinition{red}{Responses $|$ Dependent variables} Synonym for output. Can be a \textit{quantitative} (\textit{discrete}) or \textit{qualitative} (\textit{categorical}) measurement. There also exists \textit{ordered categorical} variables which refer to outputs such as "small", "large", "medium".
+
+\xdefinition{red}{Regression} When we predict quantitative outputs.
+
+\xdefinition{red}{Classification} When we predict qualitative outputs.
+
+\xdefinition{red}{Training data} A dataset $(x_i, y_i)$ or $(x_i, g_i), i = 1, \dots, N$ with which we construct our prediction rules.
+
+\xdefinition{red}{Binary coded target} A mean of representing a 2-valued categorical output $G$ by encoding it as $Y$ and then treat it as a quantitative output.
+
+\section{Linear Model}
+
+\xdefinition{red}{Linear Model} Given a vector of inputs $X^\top = (X_1, \dots, X_p)$ we predict the output $Y$ via the model
+%
+\begin{equation}
+	\hat{Y} = \hat{\beta}_0 + \sum\limits_{j=1}^{p} X_j \hat{\beta}_j
+\end{equation}
+%
+Where $\hat{\beta}_0$ is the \textit{intercept} or \textit{bias}. By including $1$ in $X$ and $\hat{\beta}_0$ in the vector of coefficients $\hat{\beta}$ we can write
+%
+\begin{equation}
+	\hat{Y} = X^\top \hat{\beta}
+\end{equation}
+
+\section{Least Squares}
+
+\end{document}
