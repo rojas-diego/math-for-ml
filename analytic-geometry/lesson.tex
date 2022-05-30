@@ -1,0 +1,148 @@
+\documentclass[12pt]{article}
+
+%Packages%
+\usepackage{amsmath, bm, xcolor, amssymb, parskip, cancel}
+
+%Meta%
+\title{Analytic Geometry}
+\author{Diego ROJAS}
+
+%Shortcuts%
+\newcommand{\mc}[1]{\mathcal{#1}}
+
+\newcommand{\R}{{\rm I\!R}}
+
+\newcommand{\bx}{{\bm{x}}}
+\newcommand{\by}{{\bm{y}}}
+\newcommand{\bz}{{\bm{z}}}
+\newcommand{\A}{{\bm{A}}}
+\newcommand{\B}{{\bm{B}}}
+\newcommand{\0}[0]{\bm{0}}
+
+\newcommand{\ipr}[1]{\langle #1 \rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\vecs}[2]{{\bm{#1}_1, \dots, \bm{#1}_#2}}
+
+\newcommand{\xdefinition}[2]{\paragraph{\colorbox{#1!30}{\textbf{Definition:}} (#2):}}
+\newcommand{\xrule}[1]{\paragraph{\colorbox{#1!30}{\textbf{Rule:}}}}
+
+%Document%
+\begin{document}
+
+\maketitle
+
+%Introduction%	
+\section{Introduction}
+
+%Norms%
+\section{Norms}
+
+\xdefinition{red}{Norm} A norm on a vector space $V$ which assigns each vector $\bx$ its length $\norm{\bx}$ is defined as
+%
+\begin{equation}
+\begin{aligned}
+	\norm{\ \cdot \ } : \ &V \rightarrow \R \\
+	                      &\bx \mapsto \norm{\bx} 
+\end{aligned}
+\end{equation}
+%
+such that for all $\lambda \in \R$ and $\bx,\by \in V$ the following holds
+%
+\begin{itemize}
+	\item \textit{Absolutely homogeneous} $|\lambda| \norm{\bx} = \norm{\lambda \bx}$
+	\item \textit{Triange equality} $\norm{\bx + \by} \leqslant \norm{\bx} + \norm{\by}$
+	\item \textit{Positive definite} $\norm{\bx} \geqslant 0$ and $\norm{\bx} = 0 \iff \bx = \0$
+\end{itemize}
+
+\xdefinition{blue}{Manhattan norm} Also called $\ell_1$ norm, it's defined for $\bx \in \R^n$ as
+%
+\begin{equation}
+	\norm{\bx}_1 = \sum\limits_{i=1}^n |x_i|
+\end{equation}
+
+\xdefinition{blue}{Euclidian norm} Also called $\ell_2$ norm, it's defined for $\bx \in \R^n$ as
+%
+\begin{equation}
+	\norm{\bx}_2 = \sqrt{\sum\limits_{i=1}^{n} x_i^2} = \sqrt{\bx^\top \bx}
+\end{equation}
+
+%Inner Products%
+\section{Inner Products}
+
+\xdefinition{blue}{Dot product} A \textit{dot product} or \textit{scalar product} is a type of inner product. In $\R^n$ it is defined as
+%
+\begin{equation}
+	\bx^\top \by = \sum\limits_{i=1}^{n} x_i y_i
+\end{equation}
+
+\xdefinition{red}{Bilinear mapping} A \textit{bilinear mapping} is a mapping $\Omega$ with two arguments for which the following holds
+%
+\begin{equation}
+\begin{aligned}
+	\Omega(\lambda \bx + \psi \by, \bz) &= \lambda \Omega(\bx, \bz) + \psi\Omega(\by, \bz) \\
+	\Omega(\bx, \lambda \by + \psi\bz) &= \lambda \Omega(\bx, \by) + \psi\Omega(\bx, \bz)
+\end{aligned}
+\end{equation}
+
+\xrule{red} Given $\Omega : V \times V \rightarrow \R$ then
+%
+\begin{itemize}
+	\item $\Omega$ is called \textit{symmetric} if $\Omega(\bx, \by) = \Omega(\by, \bx)$
+	\item $\Omega$ is called \textit{positive definite} if
+	\begin{equation}
+		\forall \bx \in V \backslash \{\0\} : \Omega(\bx, \bx) > 0, \ \ \Omega(\0, \0) = 0
+	\end{equation}
+	\item A positive definite, symmetric bilinear mapping $\Omega$ is called an \textit{inner product} and is written as $\ipr{\bx, \by}$.
+	\item The pair $(V, \ipr{\cdot, \cdot})$ is called \textit{inner product space} or \textit{Euclidian vector space} if $\ipr{\cdot, \cdot}$ is defined as the $\ell_2$ norm.
+\end{itemize}
+
+\xdefinition{red}{Symmetric, positive definite matrix} A symmetric matrix $\A \in \R^{n \times n}$ that satisfies
+%
+\begin{equation}
+	\forall \bx \in V \backslash \{\0\} : \bx^\top \A \bx > 0
+\end{equation}
+%
+If only $\geqslant$ holds, it is \textit{symmetric, positive semidefinite}.
+
+\xrule{red} Let $V$ be a vector space with basis $B$. It holds that $\ipr{\cdot, \cdot} : V \times V \rightarrow \R$ is an inner product if and only if there exists a symmatric positive definite matrix $\A \in \R^{n \times n}$ with
+%
+\begin{equation}
+	\ipr{\bx, \by} = \hat{\bx}^\top \A \hat{\by}
+\end{equation}
+%
+where $\hat{\bx}, \hat{\by}$ are the coordinate vectors of $\bx, \by$ with respect to $B$. Consequently, the following holds for $\A$:
+%
+\begin{itemize}
+	\item The null space of $\A$ consist only of $\0$.
+	\item The diagonal elements $a_{ij}$ of $\A$ are positive.
+\end{itemize}
+
+%Lengths and Distances%
+\section{Lengths and Distances}
+
+\xrule{red} Every inner product $\ipr{\bx, \bx}$ induces a norm $\norm{\bx} := \sqrt{\ipr{\bx, \bx}}$.
+
+\xdefinition{red}{Cauchy-Schwartz inequality} For an inner product vector space $(V, \ipr{\cdot, \cdot})$, the induced norm $\norm{\ \cdot \ }$ satisfies the \textit{Cauchy-Schwartz inequality} if
+%
+\begin{equation}
+	| \ipr{\bx, \by} | \leqslant \norm{\bx} \norm{\by}
+\end{equation}
+
+\xdefinition{red}{Distance and Metric} The \textit{distance} between two vectors $\bx, \by$ is defined as
+%
+\begin{equation}
+	d(\bx, \by) := \norm{\bx - \by} = \sqrt{\ipr{\bx - \by, \bx - \by}}
+\end{equation}
+%
+If we use the dot product as the inner product then $d$ is called the \textit{Euclidian distance}. The mapping
+%
+\begin{equation}
+\begin{aligned}
+	d : \ &V \times V \rightarrow \R
+	      &(\bx, \by) \mapsto d(\bx, \by)
+\end{aligned}
+\end{equation}
+%
+is called a \textit{metric}.
+
+\end{document}
