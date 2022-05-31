@@ -11,11 +11,16 @@
 \newcommand{\mc}[1]{\mathcal{#1}}
 
 \newcommand{\R}{{\rm I\!R}}
+\newcommand{\Rn}{{\R^n}}
+\newcommand{\Rmn}{{\R^{m \times n}}}
+\newcommand{\Rnn}{{\R^{n \times n}}}
 
 \newcommand{\bx}{{\bm{x}}}
 \newcommand{\by}{{\bm{y}}}
 \newcommand{\bz}{{\bm{z}}}
+\newcommand{\bb}{{\bm{b}}}
 \newcommand{\A}{{\bm{A}}}
+\newcommand{\I}{{\bm{I}}}
 \newcommand{\B}{{\bm{B}}}
 \newcommand{\0}[0]{\bm{0}}
 
@@ -37,7 +42,7 @@
 %Norms%
 \section{Norms}
 
-\xdefinition{red}{Norm} A norm on a vector space $V$ which assigns each vector $\bx$ its length $\norm{\bx}$ is defined as
+\xdefinition{blue}{Norm} A norm on a vector space $V$ which assigns each vector $\bx$ its length $\norm{\bx}$ is defined as
 %
 \begin{equation}
 \begin{aligned}
@@ -75,7 +80,7 @@ such that for all $\lambda \in \R$ and $\bx,\by \in V$ the following holds
 	\bx^\top \by = \sum\limits_{i=1}^{n} x_i y_i
 \end{equation}
 
-\xdefinition{red}{Bilinear mapping} A \textit{bilinear mapping} is a mapping $\Omega$ with two arguments for which the following holds
+\xdefinition{green}{Bilinear mapping} A \textit{bilinear mapping} is a mapping $\Omega$ with two arguments for which the following holds
 %
 \begin{equation}
 \begin{aligned}
@@ -84,7 +89,7 @@ such that for all $\lambda \in \R$ and $\bx,\by \in V$ the following holds
 \end{aligned}
 \end{equation}
 
-\xrule{red} Given $\Omega : V \times V \rightarrow \R$ then
+\xrule{blue} Given $\Omega : V \times V \rightarrow \R$ then
 %
 \begin{itemize}
 	\item $\Omega$ is called \textit{symmetric} if $\Omega(\bx, \by) = \Omega(\by, \bx)$
@@ -96,7 +101,7 @@ such that for all $\lambda \in \R$ and $\bx,\by \in V$ the following holds
 	\item The pair $(V, \ipr{\cdot, \cdot})$ is called \textit{inner product space} or \textit{Euclidian vector space} if $\ipr{\cdot, \cdot}$ is defined as the $\ell_2$ norm.
 \end{itemize}
 
-\xdefinition{red}{Symmetric, positive definite matrix} A symmetric matrix $\A \in \R^{n \times n}$ that satisfies
+\xdefinition{blue}{Symmetric, positive definite matrix} A symmetric matrix $\A \in \R^{n \times n}$ that satisfies
 %
 \begin{equation}
 	\forall \bx \in V \backslash \{\0\} : \bx^\top \A \bx > 0
@@ -104,7 +109,7 @@ such that for all $\lambda \in \R$ and $\bx,\by \in V$ the following holds
 %
 If only $\geqslant$ holds, it is \textit{symmetric, positive semidefinite}.
 
-\xrule{red} Let $V$ be a vector space with basis $B$. It holds that $\ipr{\cdot, \cdot} : V \times V \rightarrow \R$ is an inner product if and only if there exists a symmatric positive definite matrix $\A \in \R^{n \times n}$ with
+\xrule{blue} Let $V$ be a vector space with basis $B$. It holds that $\ipr{\cdot, \cdot} : V \times V \rightarrow \R$ is an inner product if and only if there exists a symmatric positive definite matrix $\A \in \R^{n \times n}$ with
 %
 \begin{equation}
 	\ipr{\bx, \by} = \hat{\bx}^\top \A \hat{\by}
@@ -128,7 +133,7 @@ where $\hat{\bx}, \hat{\by}$ are the coordinate vectors of $\bx, \by$ with respe
 	| \ipr{\bx, \by} | \leqslant \norm{\bx} \norm{\by}
 \end{equation}
 
-\xdefinition{red}{Distance and Metric} The \textit{distance} between two vectors $\bx, \by$ is defined as
+\xdefinition{blue}{Distance and Metric} The \textit{distance} between two vectors $\bx, \by$ is defined as
 %
 \begin{equation}
 	d(\bx, \by) := \norm{\bx - \by} = \sqrt{\ipr{\bx - \by, \bx - \by}}
@@ -143,6 +148,82 @@ If we use the dot product as the inner product then $d$ is called the \textit{Eu
 \end{aligned}
 \end{equation}
 %
-is called a \textit{metric}.
+is called a \textit{metric} and must satisfies the following properties.
+%
+\begin{itemize}
+	\item \textit{Positive definite} $d(\bx, \by) \geqslant 0, \ d(\bx, \by) = 0 \iff \bx = \by$
+	\item \textit{Symmetric} $d(\bx, \by)= d(\by, \bx)$
+	\item \textit{Triangle equality} $d(\bx, \bz) \leqslant d(\bx, \by) + d(\by, \bz)$
+\end{itemize}
+
+%Angles and Orthogonality%
+\section{Angles and Orthogonality}
+
+\xrule{red} Given $\bx, \by \neq \0$. The angle $\omega$ between $\bx$ and $\by$ is defined as
+%
+\begin{equation}
+	\cos \omega = \frac{\ipr{\bx, \by}}{\norm{\bx} \ \norm{\by}}
+\end{equation}
+%
+and is contained inside $[-1, 1]$.
+
+\xdefinition{red}{Orthogonality} Two vectors $\bx, \by$ are \textit{orthogonal} if $\ipr{\bx, \by} = 0$. We write $\bx \perp \by$. Furthermore, $\bx, \by$ are \textit{orthonormal} if $\norm{\bx} = 1 = \norm{\by}$.
+
+\xrule{red}
+%
+\begin{itemize}
+	\item Whether two vectors are orthogonal depends on the norm being used.
+	\item The $\0$ vector is orthogonal to every vector in the vector space.
+	\item Orthogonality is a generalization of the concept of perpendicularity.
+\end{itemize}
+
+\xdefinition{red}{Orthogonal matrix} A matrix $\A \in \Rnn$ is orthogonal if
+%
+\begin{equation}
+	\A \A^{\top} = \I = \A^{\top} \A
+\end{equation}
+%
+which implies that
+%
+\begin{equation}
+	\A^{-1} = \A^{\top}
+\end{equation}
+
+%Orthonormal basis%
+\section{Orthonormal Basis}
+
+\xdefinition{red}{Orthonormal basis} A basis $B$ of a vector space $V$ is said to be \textit{orthonormal} if
+%
+\begin{equation}
+\begin{aligned}
+	\ipr{\bb_i, \bb_j} &= 0 \ \text{for} \ i \neq j \\
+	\ipr{\bb_i, \bb_i} &= 1
+\end{aligned}
+\end{equation}
+%
+In other words, all column vectors of $B$ are orthogonal to each other. This implies that every vector has length/norm $1$, if this is not the case the basis is only said to be \textit{orthogonal}.
+
+\xdefinition{red}{Gram-Schmidt process} Given a basis $\hat{\B}$, we can perform Gaussian eliminiation on the augmented matrix $[\hat{\B} \hat{\B}^\top | \hat{\B}]$ to obtain an orthonormal basis.
+
+\section{Orthogonal Complement}
+
+\xdefinition{red}{Orthogonal complement} Given an $D$ dimensional vector space $V$ and an $M$ dimensional subspace $U \in V$. The \textit{orthogonal complement} $U^{\perp}$ is a subspace of $V$ with dimension $D - M$ that contains all vectors in $V$ that are orthogonal to every vector in $U$ with $U \cap U^\perp$ so that any vector $\bx$ can be uniquely decomposed into
+%
+\begin{equation}
+	\bx = \sum\limits_{i=1}^{M} \lambda_i \bb_i \ + \sum\limits_{j=1}^{D-M} \psi_j \bb^{\perp}_j
+\end{equation}
+%
+where $(\vecs{\bb}{M})$ is the basis of $U$, $(\vecs{\bb^{\perp}}{{D-M}})$ is the basis of $U^{\perp}$.
+
+\xrule{red} Let $U$ be a two dimensional subspace of a three dimensional vector space $V$. $U$ is a plane of $V$. Then the vector $\bm{w}$ where $\norm{\bm{w}} = 1$, which is orthogonal to the plane $U$ is the basis vector of $U^{\perp}$.
+
+%Inner Products of Functions%
+\section{Inner Products of Functions}
+
+\xrule{red} An inner product of two functions $u : \R \rightarrow \R, v : \R \rightarrow \R$ can be defined as the definite integral
+%
+\begin{equation}
+	\ipr{u, v} := \int_b^a u(x) v(x) dx
+\end{equation}
 
 \end{document}
