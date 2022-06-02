@@ -226,4 +226,29 @@ where $(\vecs{\bb}{M})$ is the basis of $U$, $(\vecs{\bb^{\perp}}{{D-M}})$ is th
 	\ipr{u, v} := \int_b^a u(x) v(x) dx
 \end{equation}
 
+\section{Orthogonal projections}
+
+\xdefinition{red}{Projection} Given a vector space $V$ and a subspace $U \subseteq V$, a \textit{projection} is a linear mapping $\pi : V \rightarrow U$ such that $\pi^2 = \pi \circ \pi = \pi$.
+%
+The transformation matrix of a projection is called a \textit{projection matrix} denoted $\bm{P}_\pi$ such that $\bm{P}_\pi^2 = \bm{P}_\pi$.j
+
+\xrule{red} Given a vector space $V \in \Rn$, a subspace $U \in \Rn, U \subseteq V$ with basis $\bb$. When we project $\bx \in V$ onto $U$ we seek the vector $\pi_U(\bx) \in U$.
+%
+\begin{itemize}
+	\item The projection $\pi_U(\bx)$ is one for which $\norm{\bx - \pi_U(\bx)}$
+	\item The segment $\bx - \pi_U(\bx)$ is orthogonal to $U$ and its basis.
+	\item $\ipr{\pi_U(\bx) - \bx, b} = 0$.
+	\item $\pi_U(\bx) = \lambda \bb$.
+\end{itemize}
+%
+Furthermore, the following equations hold.
+%
+\begin{equation}
+	\lambda = \frac{\ipr{\bx, \bb}}{\bb, \bb}
+\end{equation}
+%
+\begin{equation}
+	
+\end{equation}
+
 \end{document}
