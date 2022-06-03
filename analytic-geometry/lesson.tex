@@ -244,11 +244,17 @@ The transformation matrix of a projection is called a \textit{projection matrix}
 Furthermore, the following equations hold.
 %
 \begin{equation}
-	\lambda = \frac{\ipr{\bx, \bb}}{\bb, \bb}
+	\lambda = \frac{\ipr{\bx, \bb}}{\ipr{\bb, \bb}}
+\end{equation}
+%
+where $\lambda$ is the coordinate of $\pi_U(\bx)$ with respect to $\bb$.
+%
+\begin{equation}
+	\pi_U(\bx) = \bb \lambda = \frac{\bb^\top \bx}{\ipr{\bb, \bb}} \bb = \frac{\bb \bb^\top}{\ipr{\bb, \bb}} \bx
 \end{equation}
 %
 \begin{equation}
-	
+	\bm{P}_\pi = \frac{\bb \bb^\top}{\ipr{\bb, \bb}}
 \end{equation}
 
 \end{document}

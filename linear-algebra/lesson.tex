@@ -131,7 +131,7 @@ I_n := \begin{bmatrix}
 %Solving systems of linear equations%
 \section{Solving systems of linear equations}
 
-\xrule{blue} When solving a system of linear equations of the form $\bm{Ax} = \bm{b}$ we're looking to find scalars $x_1, \dots, x_n$ such that $\sum\nolimits_{i=1}^{n} x_i \bm{c}_i = \bm{b}$. A \textit{particular solution} of a linear system is a solution to the equation with particular, arbitrary values. A \textit{general solution} of a system of linear equations can be obtained using the following steps
+\xrule{green} When solving a system of linear equations of the form $\bm{Ax} = \bm{b}$ we're looking to find scalars $x_1, \dots, x_n$ such that $\sum\nolimits_{i=1}^{n} x_i \bm{c}_i = \bm{b}$. A \textit{particular solution} of a linear system is a solution to the equation with particular, arbitrary values. A \textit{general solution} of a system of linear equations can be obtained using the following steps
 %
 \begin{itemize}
 	\item Use gaussian elimination to find a particular solution of $\A \bm{x} = \bm{b}$.
@@ -207,7 +207,7 @@ We use $\leadsto$ to indicate an elementary transformation.
 	\end{itemize}
 \end{itemize}
 
-\xrule{blue} Every subspace $U \subseteq (\R^n, +, \cdot)$ is the solution space of a homogeneous system of linear equations $\A \bm{x} = \bm{0}$ for $\bm{x} \in \R^n$
+\xrule{black} Every subspace $U \subseteq (\R^n, +, \cdot)$ is the solution space of a homogeneous system of linear equations $\A \bm{x} = \bm{0}$ for $\bm{x} \in \R^n$
 
 %Linear independence%
 \section{Linear independence}
@@ -220,9 +220,9 @@ We use $\leadsto$ to indicate an elementary transformation.
 %
 	with $\lambda_1, ÷\dots, \lambda_k \in \R$ is a linear combination of the vectors $\bx_1, \dots, \bx_k$.
 
-\xdefinition{blue}{Linear independence} Given a vector space $V$ and $k \in \N$. Vectors $\bx_1, \dots, \bx_k \in V$ are said to be linearly independent if there exists no non-trivial solution to $\bm{0} = \sum\nolimits_{i=1}^{k} \lambda_i \bx_i$ with at least one $\lambda_i \neq 0$. Otherwise they're linearly dependent.
+\xdefinition{green}{Linear independence} Given a vector space $V$ and $k \in \N$. Vectors $\bx_1, \dots, \bx_k \in V$ are said to be linearly independent if there exists no non-trivial solution to $\bm{0} = \sum\nolimits_{i=1}^{k} \lambda_i \bx_i$ with at least one $\lambda_i \neq 0$. Otherwise they're linearly dependent.
 
-\xrule{blue}
+\xrule{green}
 %
 \begin{itemize}
   \item If at least one of the vector $\bm{x}_i$ is $\bm{0}$ then they are linearly dependent.
@@ -234,8 +234,8 @@ We use $\leadsto$ to indicate an elementary transformation.
 	  If all columns are pivots, the vectors are linearly independent.
 \end{itemize}
 
-\xrule{red} Given $m$ linear combinations over $k$ linearly independent vectors $\bm{b}_1, \dots, \bm{b}_k \in V$.
-
+\xrule{blue} Given $m$ linear combinations over $k$ linearly independent vectors $\bm{b}_1, \dots, \bm{b}_k \in V$.
+%
 \begin{equation}
 	\begin{aligned}
 		\bx_1 &= \sum\limits_{i=1}^k \lambda_{i1} \bm{b}_i \\
@@ -261,7 +261,7 @@ We can test whether $\bx_1, \dots, \bx_m$ are linearly independent using:
 %
 Which means that $\{\vecs{x}{k}\}$ is linearly independent if the column vectors $\{\vecs{\lambda}{m}\}$ are linearly independent.
 
-\xrule{blue} In a vector space $V$, $m$ linear combinations of $\vecs{b}{k}$ are linearly independent if $m > k$. 
+\xrule{green} In a vector space $V$, $m$ linear combinations of $\vecs{b}{k}$ are linearly independent if $m > k$. 
 
 %Basis and rank%
 \section{Basis and rank}
@@ -271,11 +271,11 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 %Generating Set and Basis%
 \subsection{Generating Set and Basis}
 
-\xdefinition{blue}{Generating Set and Span} Given a set of vectors $\mc{A} = \{ \vecs{x}{k} \} \subseteq \mc{V}$. If every vector $\bm{v} \in \mc{V}$ can be expressed as a linear combination of vectors in $\mc{A}$, $\mc{A}$ is called a \textit{generating set} of $V$.	The set of all linear combinations of vectors in $\mc{A}$ is called the span of $\mc{A}$. We write $V = \text{span}[\mc{A}]$ or $V = \text{span}[\vecs{x}{k}]$.
+\xdefinition{green}{Generating Set and Span} Given a set of vectors $\mc{A} = \{ \vecs{x}{k} \} \subseteq \mc{V}$. If every vector $\bm{v} \in \mc{V}$ can be expressed as a linear combination of vectors in $\mc{A}$, $\mc{A}$ is called a \textit{generating set} of $V$.	The set of all linear combinations of vectors in $\mc{A}$ is called the span of $\mc{A}$. We write $V = \text{span}[\mc{A}]$ or $V = \text{span}[\vecs{x}{k}]$.
 
-\xdefinition{blue}{Basis} Consider a vector space $V = (\mc{V}, +, \cdot)$ and $\mc{A} \subseteq \mc{V}$. A generating set $\mc{A}$ of $\mc{V}$ is called \textit{minimal} if there exists no smaller set $\tilde{\mc{A}} \subsetneq \mc{A} \subseteq \mc{V}$ that spans $\mc{V}$. Every linearly independent generating set of $V$ is minimal and is called a \textit{basis} of $V$.
+\xdefinition{green}{Basis} Consider a vector space $V = (\mc{V}, +, \cdot)$ and $\mc{A} \subseteq \mc{V}$. A generating set $\mc{A}$ of $\mc{V}$ is called \textit{minimal} if there exists no smaller set $\tilde{\mc{A}} \subsetneq \mc{A} \subseteq \mc{V}$ that spans $\mc{V}$. Every linearly independent generating set of $V$ is minimal and is called a \textit{basis} of $V$.
 
-\xrule{blue} Given $\mc{B} \subseteq \mc{V}, \mc{B} \neq \emptyset$. Then the following statements are equivalent:
+\xrule{green} Given $\mc{B} \subseteq \mc{V}, \mc{B} \neq \emptyset$. Then the following statements are equivalent:
 %
 \begin{itemize}
 	\item $\mc{B}$ is a basis of $V$
@@ -287,9 +287,9 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 		\end{equation}
 \end{itemize}
 
-\xrule{blue} Every vector space $V$ posseses a basis $B$. There can be many bases for $V$, all have the same number of elements, the \textit{basis vectors}.
+\xrule{green} Every vector space $V$ posseses a basis $B$. There can be many bases for $V$, all have the same number of elements, the \textit{basis vectors}.
 
-\xrule{blue} A basis of a subspace $U = \text{span}[\vecs{x}{k}] \subseteq \R^n$ can be found by:
+\xrule{green} A basis of a subspace $U = \text{span}[\vecs{x}{k}] \subseteq \R^n$ can be found by:
 %
 \begin{itemize}
 	\item Writing the spanning vectors as columns of a matrix $\A$
@@ -299,9 +299,9 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 
 \subsection{Rank}
 
-\xdefinition{blue}{Rank} The number of linearly independent columns of a matrix $\A \in \R^{m \times n}$ equals the number of linearly independent rows and is called the \textit{rank}. We write $\text{rk}(\A)$.
+\xdefinition{green}{Rank} The number of linearly independent columns of a matrix $\A \in \R^{m \times n}$ equals the number of linearly independent rows and is called the \textit{rank}. We write $\text{rk}(\A)$.
 
-\xrule{red}
+\xrule{blue}
 %
 \begin{itemize}
 	\item $\text{rk}(\A)$ = $\text{rk}(\A^\top)$ .i.e column rank equals row rank.
