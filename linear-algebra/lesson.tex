@@ -256,7 +256,7 @@ We can write, with $\B = [\bm{b}_1, \dots, \bm{b}_k]$, the following:
 %
 We can test whether $\bx_1, \dots, \bx_m$ are linearly independent using:
 \begin{equation}
-	\sum\limits_{j=1}^m \psi_j \bx_j = \sum\limits_{j=1}^m \B\bm{\lambda}_j = \B \sum\limits_{j=1}^m \psi_j \bm{\lambda}_j
+	\sum\limits_{j=1}^m \psi_j \bx_j = \sum\limits_{j=1}^m \psi_j \B\bm{\lambda}_j = \B \sum\limits_{j=1}^m \psi_j \bm{\lambda}_j
 \end{equation}
 %
 Which means that $\{\vecs{x}{k}\}$ is linearly independent if the column vectors $\{\vecs{\lambda}{m}\}$ are linearly independent.
@@ -307,14 +307,14 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 	\item $\text{rk}(\A)$ = $\text{rk}(\A^\top)$ .i.e column rank equals row rank.
 	\item The columns of $\A \in \R^{m \times n}$ span a subspace $U \subseteq \R^m$ with $\text{dim}(U) = \text{rk}(\A)$. This subspace is called the \textit{image} or \textit{range}. A basis of $U$ can be found by applying Gaussian elimination to $\A$. Same goes for the rows, given a subspace $W \in \R^n$.	
 	\item For all $\A \in \R^{n \times n}$ it holds that $\A$ is regular (invertible) if and only $\text{rk}(\A) = n$.
-	\item For all $\A \in \R^{m \times n}$ and all $\bm{b} \in \R^m$ it holds that the linear equation system $\A \bm{x} = \bm{x}$ can be solved only and if $\text{rk}(\A) = \text{rk}(\A | \bm{b})$
+	\item For all $\A \in \R^{m \times n}$ and all $\bm{b} \in \R^m$ it holds that the linear equation system $\A \bm{x} = \bm{b}$ can be solved only and if $\text{rk}(\A) = \text{rk}(\A | \bm{b})$
 	\item A matrix $\A \in \R^{m \times n}$ is said to have \textit{full-rank} if $\text{rk}(\A) = \text{min}(m, n)$. Otherwise, it is \textit{rank-deficient}.
 \end{itemize}
 
 %Linear mappins%
 \section{Linear mappings}
 
-\xdefinition{blue}{Linear mapping} For vector spaces $V, W$, a mapping $\Phi : V \rightarrow W$ is called a \textit{linear mapping} (or \textit{linear transformation} or \textit{vector space homomorphism}). Linear transformations are generally represented as matrices.
+\xdefinition{green}{Linear mapping} For vector spaces $V, W$, a mapping $\Phi : V \rightarrow W$ is called a \textit{linear mapping} (or \textit{linear transformation} or \textit{vector space homomorphism}). Linear transformations are generally represented as matrices.
 %
 \begin{equation}
 \begin{aligned}
@@ -323,7 +323,7 @@ In a vector space $V$, we are interested in a set of vectors $\mathcal{A}$ that 
 \end{aligned}
 \end{equation}
 
-\xdefinition{blue}{Injective, Surjective, Bijective} Consider a mapping $\Phi : \mc{V} \rightarrow \mc{W}$ where $\mc{V}, \mc{W}$ can be arbitrary sets. Then $\Phi$ is called
+\xdefinition{green}{Injective, Surjective, Bijective} Consider a mapping $\Phi : \mc{V} \rightarrow \mc{W}$ where $\mc{V}, \mc{W}$ can be arbitrary sets. Then $\Phi$ is called
 %
 \begin{itemize}
 	\item \textit{Injective} if $\forall \bm{x}, \bm{y} \in \mc{V} : \Phi(\bm{x}) = \Phi(\bm{y}) \implies \bm{x} = \bm{y}$.
@@ -396,7 +396,7 @@ where $\bm{S} \in \R^{n \times n}$ is the transformation matrix of $\text{id}_V$
 
 \xdefinition{blue}{Equivalence} Two matrices $\A, \tilde{\A} \in \R^{m \times n}$ are \textit{equivalent} if there exists regular matrices $\bm{S} \in \R^{n \times n}$ and $\bm{T} \in \R^{m \times m}$ such that $\tilde{\bm{A}} = \bm{T}^{-1} \A \bm{S}$.
 
-\xdefinition{blue}{Similarity} Two matrices $\A, \tilde{\A} \in \R^{n \times n}$ are \textit{similar} if there exists a regular matrix $\bm{S} \in \R^{n \times n}$ such that $\tilde{\bm{A}} = \bm{S}^{-1} \A \bm{S}$. 
+\xdefinition{green}{Similarity} Two matrices $\A, \tilde{\A} \in \R^{n \times n}$ are \textit{similar} if there exists a regular matrix $\bm{S} \in \R^{n \times n}$ such that $\tilde{\bm{A}} = \bm{S}^{-1} \A \bm{S}$. 
 
 \xrule{red} Considering vector spaces $V, W, X$, the linear mapping $\Phi : V \rightarrow W$ and the linear mapping $\Psi : W \rightarrow X$. We know that the linear mapping $\Psi \circ \Phi : V \rightarrow X$ is linear and we can write $\A_{\Psi \circ \Phi} = \A_\Psi \A_\Phi$. Therefore
 %
@@ -406,6 +406,8 @@ where $\bm{S} \in \R^{n \times n}$ is the transformation matrix of $\text{id}_V$
 	\item $\bm{S}$ is the transformation matrix of a linear mapping $\Psi_{B\tilde{B}} : V \rightarrow V$
 	\item $\bm{T}$ is the transformation matrix of a linear mapping $\Xi_{C\tilde{C}} : W \rightarrow W$
 \end{itemize}
+
+\xdefinition{red}{Dimension} The \textit{dimension} of a vector space $V$ is the number of basis vectors of $V$.
 
 \xdefinition{blue}{Kernel} The kernel $\ker(\Phi)$ is the set of vectors that $\Phi$ maps to the neutral element $\bm{0}_W \in W$. It is defined as
 %
@@ -427,9 +429,9 @@ where $\bm{S} \in \R^{n \times n}$ is the transformation matrix of $\text{id}_V$
 	\item $\Phi$ is injective if and only if $\ker(\Phi) = \bm{0}$ (one to one mapping between $V$ and $W$ with respect to $\Phi$).
 \end{itemize}
 
-\xdefinition{red}{Column space} The image is equivalent to the span of the columns of the transformation matrix. This is called the \textit{null space}.
+\xdefinition{blue}{Column space} The image is equivalent to the span of the columns of the transformation matrix. This is called the \textit{column space}.
 
-\xdefinition{red}{Null space} The null space $\ker(\Phi)$ is the general solution to the homogeneous linear system $\A \bm{x} = \bm{0}$.
+\xdefinition{blue}{Null space} The \textit{null space} $\ker(\Phi)$ is the general solution to the homogeneous linear system $\A \bm{x} = \bm{0}$.
 
 \xrule{red} The \textit{rank-nullity theorem} also reffered to as the \textit{fundamental theorem of linear mappings} states that
 %
