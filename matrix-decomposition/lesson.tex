@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+
+%Packages%
+\usepackage{amsmath, bm, xcolor, amssymb, parskip, cancel}
+
+%Meta%
+\title{Matrix Decomposition}
+\author{Diego ROJAS}
+
+%Shortcuts%
+\newcommand{\mc}[1]{\mathcal{#1}}
+
+\newcommand{\R}{{\rm I\!R}}
+\newcommand{\Rn}{{\R^n}}
+\newcommand{\Rmn}{{\R^{m \times n}}}
+\newcommand{\Rnn}{{\R^{n \times n}}}
+
+\newcommand{\bx}{{\bm{x}}}
+\newcommand{\by}{{\bm{y}}}
+\newcommand{\bz}{{\bm{z}}}
+\newcommand{\bb}{{\bm{b}}}
+\newcommand{\A}{{\bm{A}}}
+\newcommand{\I}{{\bm{I}}}
+\newcommand{\B}{{\bm{B}}}
+\newcommand{\0}[0]{\bm{0}}
+
+\newcommand{\vecs}[2]{{\bm{#1}_1, \dots, \bm{#1}_#2}}
+
+\newcommand{\xdefinition}[2]{\paragraph{\colorbox{#1!30}{\textbf{Definition:}} (#2):}}
+\newcommand{\xrule}[1]{\paragraph{\colorbox{#1!30}{\textbf{Rule:}}}}
+
+%Document%
+\begin{document}
+
+\maketitle
+
+%Introduction%	
+\section{Introduction}
+
+%Determinant and Trace%
+\section{Determinant and Trace}
+
+\xdefinition{red}{Determinant} Given a square matrix $\A \in \Rnn$ 
+%
+\begin{equation}
+	\det(\A) = \begin{vmatrix}
+		a_{11} \ \cdots \ a_{1n} \\
+		\vdots \ \ddots \ \vdots \\
+		a_{n1} \ \cdots \ a_{nn}
+	\end{vmatrix}
+\end{equation}
+
+\end{document}
